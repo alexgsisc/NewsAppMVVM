@@ -1,29 +1,28 @@
-package com.alexisgs.newsappmvvm.ui.fragment
+package com.alexisgs.newsappmvvm.breaking.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.alexisgs.newsappmvvm.databinding.FragmentArticleBinding
 import com.alexisgs.newsappmvvm.databinding.FragmentSearchNewsBinding
 
 /**
  *  Created by Alexis Guadarrama on 2/10/21.
  */
-class ArticleFragment : Fragment() {
+class SearchNewsFragment : Fragment() {
 
-    private var _fragmentArticleBinding: FragmentArticleBinding? = null
+    private var _fragmentSearchNewsBinding: FragmentSearchNewsBinding? = null
 
-    private val fragmentArticleBinding get() = _fragmentArticleBinding!!
+    private val fragmentSearchNewsBinding get() = _fragmentSearchNewsBinding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _fragmentArticleBinding = FragmentArticleBinding.inflate(inflater, container, false)
-        return fragmentArticleBinding.root
+        _fragmentSearchNewsBinding = FragmentSearchNewsBinding.inflate(inflater, container, false)
+        return fragmentSearchNewsBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -32,6 +31,6 @@ class ArticleFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        _fragmentArticleBinding = null
+        _fragmentSearchNewsBinding = null
     }
 }
