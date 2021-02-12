@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.alexisgs.newsappmvvm.breaking.ui.MainActivity
+import com.alexisgs.newsappmvvm.breaking.viewmodel.NewsViewModel
 import com.alexisgs.newsappmvvm.databinding.FragmentSavedNewsBinding
 
 /**
@@ -15,6 +17,8 @@ class SaveNewsFragment : Fragment() {
     private var _fragmentSavedNewsBinding: FragmentSavedNewsBinding? = null
 
     private val fragmentSavedNewsBinding get() = _fragmentSavedNewsBinding!!
+
+    lateinit var viewModel : NewsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,7 +32,7 @@ class SaveNewsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //breakingNewsBinding.pogressBarPagination.visibility = View.VISIBLE
+        viewModel = (activity as MainActivity).viewModel
     }
 
 

@@ -1,6 +1,6 @@
 package com.alexisgs.newsappmvvm.breaking.data.api
 
-import com.alexisgs.newsappmvvm.breaking.data.model.BreakingResponse
+import com.alexisgs.newsappmvvm.breaking.data.models.BreakingResponse
 import com.alexisgs.newsappmvvm.utils.Constants.Companion.API_KEY
 import retrofit2.Response
 import retrofit2.http.GET
@@ -11,14 +11,14 @@ import retrofit2.http.Query
  */
 interface BreakingAPI {
 
-    @GET("v2/top-headlines")
+    @GET("/top-headlines")
     suspend fun getBreakingNews(
         @Query("country") countryCode: String = "us",
         @Query("page") pageNumber: Int = 1,
         @Query("apikey") apiKey: String = API_KEY
     ): Response<BreakingResponse>
 
-    @GET("v2/everything")
+    @GET("/everything")
     suspend fun searchForNews(
         @Query("q") searchQuery: String,
         @Query("from") pageNumber: Int = 1,

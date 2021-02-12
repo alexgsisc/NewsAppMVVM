@@ -1,0 +1,36 @@
+package com.alexisgs.newsappmvvm.breaking.viewmodel
+
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.alexisgs.newsappmvvm.breaking.data.models.BreakingResponse
+import com.alexisgs.newsappmvvm.breaking.repository.NewsRepository
+import com.alexisgs.newsappmvvm.utils.Resource
+import kotlinx.coroutines.launch
+import retrofit2.Response
+
+class NewsViewModel(val newsRepository: NewsRepository) : ViewModel() {
+
+    val breakingNews: MutableLiveData<Resource<BreakingResponse>> = MutableLiveData()
+
+    val breakingNewsPage = 1
+
+    init {
+        getBreakingNews("us")
+    }
+
+    fun getBreakingNews(countryCode: String) = viewModelScope.launch {
+        breakingNews.postValue(Resource.Loading())
+        val response = newsRepository.getBreakingNews(countryCode, breakingNewsPage)
+        breakingNews.postValue(handleBreakingNewsResponse(response))
+    }
+
+    private fun handleBreakingNewsResponse(response: Response<BreakingResponse>): Resource<BreakingResponse> {
+        if (response.isSuccessful) {
+            response.body()?.let { resultResponse ->
+                return@let Resource.Success(resultResponse)
+            }
+        }
+        return Resource.Error(response.message())
+    }
+}

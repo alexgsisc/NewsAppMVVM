@@ -1,4 +1,4 @@
-package com.alexisgs.newsappmvvm.breaking.data.model
+package com.alexisgs.newsappmvvm.breaking.data.models
 
 data class BreakingResponse(
     val articles: List<Article>,

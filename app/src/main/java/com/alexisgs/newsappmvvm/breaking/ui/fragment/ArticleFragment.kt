@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.alexisgs.newsappmvvm.breaking.ui.MainActivity
+import com.alexisgs.newsappmvvm.breaking.viewmodel.NewsViewModel
 import com.alexisgs.newsappmvvm.databinding.FragmentArticleBinding
 
 /**
@@ -15,6 +17,8 @@ class ArticleFragment : Fragment() {
     private var _fragmentArticleBinding: FragmentArticleBinding? = null
 
     private val fragmentArticleBinding get() = _fragmentArticleBinding!!
+
+    lateinit var viewModel : NewsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,6 +31,7 @@ class ArticleFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = (activity as MainActivity).viewModel
     }
 
     override fun onDestroy() {
